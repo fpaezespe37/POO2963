@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.chickenfarmers.mode;
+package ec.espe.edu.chickenfarmers.mode;
 
 /**
  *
- * @author Labs-DCCO
+ * @author Fred
  */
 public class Chicken {
-    private int id;
+    private int id; 
     private String name;
     private String color;
     private int age; 
     private boolean isMolting;
     
-    public void doStuff(int forTime){
-        System.out.println("My chicken is doing things");
+    
+      public void doStuff(int forTime){
+        System.out.println("My chicken" +  "is doing things");
         cluck();
         wander();
         eat();
@@ -26,37 +27,29 @@ public class Chicken {
         cluck();
         cluck();
         drink();
+        }
         
-        
-    }
-    
-    private void cluck(){
-        System.out.println("Cluck cluck cluck");
-        
-                
-    }
-    
-    public void wander(){
-        System.out.println(getName() +"is wondering");
-        
-    }
-    
-    private void eat(){
-        System.out.println(getName() +"is eating");
-        
-    }
-    
-    private void drink(){
-        System.out.println(getName() +"is drinking");
-    }
-    
-    private void poop(){
-        System.out.println(getName() +"is pooping");
-    }
-    
-    private Egg layAnEgg(){
-        return new Egg();
-    }    /**
+ 
+      private void cluck(){
+            System.out.println("Cluck cluck cluck");
+        }
+      private void wander(){
+          System.out.println(getName() + " is wandering");
+      }
+      public void eat(){
+          System.out.println(getName() + " is eating");
+      }
+      private void drink(){
+          System.out.println(getName() + " is drinking water");    
+      }
+      private void poop(){
+          System.out.println(getName() + " is pooping ");
+      }
+      private Egg layAnEgg(){
+          return new Egg();
+      }
+
+    /**
      * @return the id
      */
     public int getId() {
@@ -125,8 +118,6 @@ public class Chicken {
     public void setIsMolting(boolean isMolting) {
         this.isMolting = isMolting;
     }
-
-    public void setname(String lucy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+    
+   
