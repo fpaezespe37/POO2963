@@ -4,7 +4,7 @@ total = 0
 #print(y)
 #cedula = cedula // 10
 #print(cedula)
-cedula = 170944714
+cedula = 175089375
 while cedula > 0:
     x = cedula % 10
     
@@ -27,6 +27,7 @@ while cedula > 0:
     cedula = cedula // 10
     #print(cedula)
 total = total % 10 
-total = 10 - total
+if total != 0:
+    total = 10 - total
 print("El digito verificador es: " + str(total))    
 input()
