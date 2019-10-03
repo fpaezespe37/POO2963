@@ -1,10 +1,7 @@
 y = 1
 total = 0
-#y= cedula % 10
-#print(y)
-#cedula = cedula // 10
-#print(cedula)
-cedula = 175089375
+
+cedula = 1750262176
 while cedula > 0:
     x = cedula % 10
     
@@ -19,8 +16,8 @@ while cedula > 0:
     if x >= 10:
         z = x
         z = x % 10
-        x = x // 10
-        x = z + x 
+        x = x // 10 #Proceso si supera a 10, caso es separa los numeros y sumarlo. 
+        x = z + x   #Suma de los dos numero separados superados por 10.
     total = total + x 
     print(total)   
     #print(x)
