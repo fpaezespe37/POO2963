@@ -2,7 +2,7 @@ public class Cedula {
     public static void main(String[] args) {
         int y = 1;
         int total = 0;
-        int cedula = 17562176;
+        int cedula = 171719669;
         int x;
         int z;
         while (cedula > 0) {
