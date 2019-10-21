@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Cedula",
+            "request": "launch",
+            "mainClass": "Cedula"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - cedula",
             "request": "launch",
             "mainClass": "cedula"

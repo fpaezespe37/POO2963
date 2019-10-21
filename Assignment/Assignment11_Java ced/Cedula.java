@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class cedula
 {
-public static void main ( String[] args ) {
+public static void main ( String[] args)  {
 //int cedula = 120548967;
 Scanner scn = new Scanner(System.in);
 System.out.println("Ingrese la cedula: ");
@@ -31,6 +31,9 @@ switch(provincias)
    
    case 12 :
         System.out.println("La provincia es de Los Rios");
+   break;
+   case 13 :
+        System.out.println("La provincia es de Manabi");
    break; // break es opcional
    // Podemos tener cualquier número de declaraciones de casos o case
    // debajo se encuentra la declaración predeterminada, que se usa cuando ninguno de los casos es verdadero.
@@ -73,6 +76,7 @@ while (ced.cedula > 0){
 if (total != 0){
     total = 10 - total;
 }
+
     
 System.out.println("El digito verificador es: " + total);
 
