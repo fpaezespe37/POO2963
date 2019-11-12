@@ -15,4 +15,14 @@ public class ClassA {
 	private float n;
 	private ClassB b;
 
+	/**
+	 * 
+	 * @param c
+     * @return 
+	 */
+	public ClassD m(ClassC c) {
+		// TODO - implement ClassA.m
+		throw new UnsupportedOperationException();
+	}
+
 }
