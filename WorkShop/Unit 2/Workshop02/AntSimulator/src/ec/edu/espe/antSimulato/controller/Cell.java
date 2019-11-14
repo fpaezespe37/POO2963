@@ -7,6 +7,7 @@ package ec.edu.espe.antSimulato.controller;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,16 +15,24 @@ import java.util.ArrayList;
  * @author Labs-DCCO
  */
 public class Cell {
+int numh = 10;
+	private int row;
+	private int col;
 
-    private int row;
-    private int col;
+	/**
+	 * 
+	 * @param Pheromone
+	 */
+	public void ReceivePheromone(int Pheromone) {
+		// TODO - implement Cell.ReceivePheromone
+		throw new UnsupportedOperationException();
+	}
 
-    public void receivePheromone() {
-
-    }
-
-    public void getAnts() {
-        Arraylist<Ant> antList = new ArrayList<>;
-    }
+	public List<Ant> GetAnts() {
+		// TODO - implement Cell.GetAnts
+		
+               System.out.println("El numero de hormigas en cell es de: " + numh); 
+    return null;
+	}
 
 }

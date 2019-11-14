@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.antSimulato.model;
+package ec.edu.espe.antSimulato.controller;
+
+import ec.edu.espe.antSimulato.controller.Cell;
 
 /**
  *
  * @author Labs-DCCO
  */
 public class Nest {
-    
+int nidoh = 45;
+	private Cell position;
+        
 }

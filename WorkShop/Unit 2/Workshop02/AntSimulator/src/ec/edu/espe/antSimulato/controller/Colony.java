@@ -7,8 +7,16 @@ package ec.edu.espe.antSimulato.controller;
 
 /**
  *
- * @author Labs-DCCO
+ * @author Fred
  */
-class Arraylist<T> {
-    
+public class Colony {
+
+    public int numh = 5;
+
+    public void Run() {
+        // TODO - implement Colony.Run
+
+        System.out.println("El numero de hormigas es  " + numh);
+    }
+
 }
