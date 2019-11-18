@@ -9,23 +9,21 @@ package ec.edu.espe.ManagementSystem.model.folders;
  *
  * @author ASUS
  */
-public class Folder {
-    private String labe;
-    
+public class Folder extends InformationNode {
+    private String label;
     
     public void SelectChild(){
         
-    }
-    public void GetParametFolder(){
+    } 
+    public void GetParentFolder(){
         
     }
-    public void CreateNote(){
+    public void CreateAccount(){
         
     }
     public void SelectAccount(){
         
     }
-    
     public void SelectNote(){
         
     }

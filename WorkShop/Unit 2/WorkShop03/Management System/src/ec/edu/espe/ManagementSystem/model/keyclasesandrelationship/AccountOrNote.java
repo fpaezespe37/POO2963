@@ -5,13 +5,16 @@
  */
 package ec.edu.espe.ManagementSystem.model.keyclasesandrelationship;
 
+import ec.edu.espe.ManagementSystem.model.folders.InformationNode;
+
+
 /**
  *
  * @author ASUS
  */
-public class AccountOrNote extends InformationOwner{
+public class AccountOrNote extends InformationNode{
     
-    private List<>
+   
     
     
     

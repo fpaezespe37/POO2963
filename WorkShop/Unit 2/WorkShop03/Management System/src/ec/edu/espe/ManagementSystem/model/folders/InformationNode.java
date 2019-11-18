@@ -9,6 +9,6 @@ package ec.edu.espe.ManagementSystem.model.folders;
  *
  * @author ASUS
  */
-public class InformationNode {
+public class InformationNode  {
     
 }
