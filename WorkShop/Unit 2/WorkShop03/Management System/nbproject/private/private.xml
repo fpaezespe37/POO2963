@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/authenticationAndSession/UserSession.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/User.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/accounts/PhysicalAccessAccount.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/folders/Folder.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/Account.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/passwordgenerator/PasswordCriteria.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/passwordgenerator/EndDate.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/InformationOwner.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/passwordgenerator/InformationUser.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/authenticationAndSession/Authenticator.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/passwordgenerator/Password.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/FullName.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/model/main.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/AccountOrNote.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/accounts/WebbasedAccount.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/view/From.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/view/LoginFrom.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/accounts/ComputerorNetworkAccount.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/folders/AccountOrNote.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/Password.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/keyclasesandrelationship/TrustFriendsGroup.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/folders/InformationNode.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/authenticationAndSession/SetofActiveUsers.java</file>
+            <file>file:/C:/Users/Labs-DCCO/Desktop/Programing%20Object/POO2963/WorkShop/Unit%202/WorkShop03/Management%20System/src/ec/edu/espe/ManagementSystem/model/accounts/DestopBasedApplicationCcount.java</file>
+        </group>
+    </open-files>
+</project-private>

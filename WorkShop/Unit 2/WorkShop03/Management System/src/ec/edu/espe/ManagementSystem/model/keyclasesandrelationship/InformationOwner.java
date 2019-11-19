@@ -5,10 +5,14 @@
  */
 package ec.edu.espe.ManagementSystem.model.keyclasesandrelationship;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ASUS
  */
-public class InformationOwner {
-    
+public class InformationOwner extends User {
+    private ArrayList<AccountOrNote> accountOrNote;
+    private ArrayList<TrustFriendsGroup> turstFriendsGroup;
 }
+

@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.ManagementSystem.model.keyclasesandrelationship;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,17 +14,17 @@ import java.util.List;
  */
 public class User {
     
-    protected List<Username> username;
-    protected List<Password> password;
-    protected List<FullName>fullName;
-    protected List<EmailAddress4>emailAddress;
-       
+    private String userName;
+    private String password;
+    private String fullName;
+    private boolean isActive;
     
-    public boolean checkPassword (String password){
-        return true;
+    public boolean checkPassword(String password){
+        boolean checkedPassword = false;
+        if(this.password.equals(password)){
+            checkedPassword = true;
+        }
+        return checkedPassword;
     }
-            
-    public void getTrustFriendsGroups(){
-        
-    }
+   
 }

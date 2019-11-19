@@ -5,11 +5,22 @@
  */
 package ec.edu.espe.ManagementSystem.model.keyclasesandrelationship;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ASUS
  */
 public class TrustFriendsGroup{
    private String label;
-           
+    
+   private ArrayList<Account> acounts;
+    
+    public void viewAccounts(){
+        System.out.println(acounts);
+    }
+    
+    public void setFriends(ArrayList<Account> acounts){
+        this.acounts = acounts;
+    }
 }
