@@ -3,11 +3,7 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-<<<<<<< HEAD
-            <name>Archivos</name>
-=======
-            <name>archivos</name>
->>>>>>> 7c4fd005d722afb23c84a842b731cfa0f3403490
+            <name>Edad</name>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
