@@ -9,12 +9,14 @@ package ec.edu.espe.Polymorphism.model;
  *
  * @author Fred
  */
-public class Frog {
+public class Frog extends Anphibian{
     private boolean liveinWater;
 
-    public Frog(boolean liveinWater) {
-        this.liveinWater = liveinWater;
+    public Frog(boolean liveinWater, int id, String name, String gender, float weight, Cage cage) {
+        super(liveinWater, id, name, gender, weight, cage);
     }
+
+   
 
     @Override
     public String toString() {
