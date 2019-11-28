@@ -14,5 +14,10 @@ public class Reptil extends Animal{
     public Reptil(int id, String name, String gender, float weight, Cage cage) {
         super(id, name, gender, weight, cage);
     }
+
+    @Override
+    public String getData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

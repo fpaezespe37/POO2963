@@ -134,14 +134,24 @@ public class Poly extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Cage cage = new Cage(1, "hierro", 1, 1);
-        Animal animal = new Animal(1, "Pepito", "Male", 5, cage);
+        Animal animal = new Animal(1, "Pepito", "Male", 5, cage) {
+            @Override
+            public String getData() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         jLabel1.setText(animal.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Cage cage2 = new Cage(2, "lagos", 2, 1);
-        Animal anima3 = new Animal(3, "nemo", "masculino", 2, cage2);
+        Animal anima3 = new Animal(3, "nemo", "masculino", 2, cage2) {
+            @Override
+            public String getData() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         jLabel2.setText(anima3.toString());
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -149,7 +159,12 @@ public class Poly extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Cage cage4 = new Cage(4, "grass",1, 4);
-        Animal animal7 = new Animal(4, "Farns", "Male", 4, cage4);
+        Animal animal7 = new Animal(4, "Farns", "Male", 4, cage4) {
+            @Override
+            public String getData() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         jLabel3.setText(animal7.toString());
     }//GEN-LAST:event_jButton3ActionPerformed
 

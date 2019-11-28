@@ -115,6 +115,7 @@
     <Component class="javax.swing.JTextField" name="jtxtDay">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtDayActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtDayKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -128,8 +129,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxtMonth">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtMonthKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxtYear">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtYearKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

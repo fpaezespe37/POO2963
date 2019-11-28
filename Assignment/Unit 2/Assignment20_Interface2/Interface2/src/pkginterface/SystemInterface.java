@@ -8,6 +8,7 @@ package pkginterface;
 import edad.ExtractDate;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,10 +61,27 @@ public class SystemInterface extends javax.swing.JFrame {
                 jtxtDayActionPerformed(evt);
             }
         });
+        jtxtDay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtDayKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Mes:");
 
         jLabel5.setText("Año:");
+
+        jtxtMonth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtMonthKeyTyped(evt);
+            }
+        });
+
+        jtxtYear.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtYearKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,20 +147,50 @@ public class SystemInterface extends javax.swing.JFrame {
         String dia = jtxtDay.getText();
         String mes = jtxtMonth.getText();
         GregorianCalendar fecha = new GregorianCalendar(Integer.parseInt(anio), Integer.parseInt(mes), Integer.parseInt(dia));
-        
+
         int day, month, year;
         ExtractDate days = new ExtractDate();
         day = days.calculardays(fecha);
         month = days.calcularmonths(fecha);
         year = days.calcularyears(fecha);
-        jLabel3.setText(" Días: " + Integer.toString(day)+ " Meses: " + Integer.toString(month) + " Años : " + Integer.toString(year));
+        jLabel3.setText(" Días: " + Integer.toString(day) + " Meses: " + Integer.toString(month) + " Años : " + Integer.toString(year));
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtxtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtDayActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jtxtDayActionPerformed
+
+    private void jtxtDayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDayKeyTyped
+        // TODO add your handling code here:
+        char validate = evt.getKeyChar();
+        if (Character.isLetter(validate)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Enter numbers no letters please", "EROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtxtDayKeyTyped
+
+    private void jtxtMonthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtMonthKeyTyped
+        // TODO add your handling code here:
+        char validate = evt.getKeyChar();
+        if (Character.isLetter(validate)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Enter numbers no letters please", "EROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtxtMonthKeyTyped
+
+    private void jtxtYearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtYearKeyTyped
+        // TODO add your handling code here:
+        char validate = evt.getKeyChar();
+        if (Character.isLetter(validate)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Enter numbers no letters please", "EROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jtxtYearKeyTyped
 
     /**
      * @param args the command line arguments

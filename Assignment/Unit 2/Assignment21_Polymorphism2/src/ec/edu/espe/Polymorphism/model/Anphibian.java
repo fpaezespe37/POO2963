@@ -36,6 +36,11 @@ public class Anphibian extends Animal{
     public void setLiveinWater(boolean liveinWater) {
         this.liveinWater = liveinWater;
     }
+
+    @Override
+    public String getData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
           
 }
