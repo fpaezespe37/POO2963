@@ -22,7 +22,7 @@ public class calcularEdad {
 		// Mostramos el resultado de llamar a la función calcular pasando
 		// como parametro la fecha de nacimiento YYYY-MM-DD
                 //Gregrian calendar librería propia de JAVA.
-                GregorianCalendar fecha = new GregorianCalendar(2003,01,9);
+                GregorianCalendar fecha = new GregorianCalendar(1970,12,17);
 		int day, month, year; 
                 ExtractDate days = new ExtractDate();
                 day = days.calculardays(fecha);
