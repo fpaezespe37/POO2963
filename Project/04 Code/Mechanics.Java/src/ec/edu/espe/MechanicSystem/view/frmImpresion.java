@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.MechanicSystem.view;
 
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import javax.swing.JFrame;
@@ -14,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Fred
  */
-public class frmImpresion extends javax.swing.JFrame {
+public class frmImpresion extends javax.swing.JFrame implements Printable {
 
     /**
      * Creates new form frmImpresion
@@ -127,4 +130,9 @@ public class frmImpresion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int print(Graphics grphcs, PageFormat pf, int i) throws PrinterException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

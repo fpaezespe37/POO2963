@@ -64,21 +64,41 @@ public class frmMenuSuperUser extends javax.swing.JFrame {
         jButton3.setFocusPainted(false);
         jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/ventas_press.png"))); // NOI18N
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/ventas_press.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/personal.png"))); // NOI18N
         jButton4.setFocusPainted(false);
         jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/personal_press.png"))); // NOI18N
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/personal_press.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/reportes.png"))); // NOI18N
         jButton5.setFocusPainted(false);
         jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/reportes_press.png"))); // NOI18N
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/reportes_press.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/compras.png"))); // NOI18N
         jButton6.setFocusPainted(false);
         jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/compras_press.png"))); // NOI18N
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagessuperuser/compras_press.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("ADMIN USER");
 
@@ -151,6 +171,30 @@ public class frmMenuSuperUser extends javax.swing.JFrame {
         frmProvitors provitors = new frmProvitors();
         provitors.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        frmPersonal provitors = new frmPersonal();
+        provitors.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        frmReport provitors = new frmReport();
+        provitors.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        frmCompras compras = new frmCompras();
+        compras.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         frmVentas compras = new frmVentas();
+        compras.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

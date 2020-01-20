@@ -3,4 +3,5 @@ Hyundai
 Lavca
 Toyota
 Kia Motors
-Samy Cars
+Samy Cars{'Provitor' :OscarCars
+{'Provitor' :Fredds{

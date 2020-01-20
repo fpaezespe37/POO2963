@@ -78,6 +78,11 @@ public class frmRegister extends javax.swing.JFrame {
 
         txtInsUsername.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         txtInsUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInsUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInsUsernameActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtInsUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 150, 30));
 
         psfInsPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -145,6 +150,10 @@ public class frmRegister extends javax.swing.JFrame {
         Gson gson = new Gson();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtInsUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInsUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInsUsernameActionPerformed
 
     /**
      * @param args the command line arguments

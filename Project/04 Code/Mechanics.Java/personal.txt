@@ -1,0 +1,4 @@
+{'user' :Mario;'apellido' :Perez;sexo :Masculino;codigo :efsfsf
+{'nombre' :Camila;'apellido' :PAez;sexo :F;codigo :Ec33
+{'nombre' :Oscar;'apellido' :PE;sexo :Femenino;codigo :ersdf3
+{'nombre' :Camila;'apellido' :f;sexo :Femenino;codigo :eee33
