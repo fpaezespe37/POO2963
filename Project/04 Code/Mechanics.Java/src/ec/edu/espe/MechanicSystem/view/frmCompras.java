@@ -6,11 +6,20 @@
 package ec.edu.espe.MechanicSystem.view;
 
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,10 +35,8 @@ public class frmCompras extends javax.swing.JFrame {
     DefaultTableModel modelo;
     public frmCompras() {
         initComponents();
-         modelo = new DefaultTableModel();
-         modelo.addColumn("Nombre");
-         modelo.addColumn("Servicio");
-         this.jTable1.setModel(modelo);
+        
+         ListaElementosComprasBD();
     }
 
     /**
@@ -50,8 +57,10 @@ public class frmCompras extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 50));
 
         jLabel1.setText("Nombre: ");
 
@@ -91,29 +100,37 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmbx, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jButton2)))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cmbx, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(64, 64, 64)
+                .addComponent(jButton2)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +150,9 @@ public class frmCompras extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(233, Short.MAX_VALUE))
         );
 
@@ -170,16 +189,117 @@ public class frmCompras extends javax.swing.JFrame {
         }
         
         Gson gson = new Gson();
-        
-         String[] Datos = new String[5];
-        Datos[0] = jTextField1.getText();
-        jTextField1.setText(null);
-        Datos[1] = jTextField2.getText();
-        jTextField2.setText(null);
-        modelo.addRow(Datos);
-        
+        CrearComprasMongo();
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit( 0 );
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void CrearComprasMongo() {
+        ArrayList<Persona> compras = new ArrayList<Persona>();
+        compras.add(new Persona(jTextField1.getText().toString(),jTextField2.getText().toString()));
+        //compras.add(new Persona(jTextField2.getText().toString()));
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Compras");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.1: "CREATE" -> Metemos los objetos Nombre Persona (o documentos en Mongo) en la coleccion Personas
+            for (Persona pers : compras) {
+                collection.insert(pers.toDBObjectCompras());
+            }
+
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+            System.out.println("Número de documentos en la colección : " + numDocumentos + "\n");
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+            try {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO 4.2.2: "READ" -> Hacemos una Query con condiciones (Buscar Futbolistas que sean delanteros) y lo pasamos a un objeto Java
+            System.out.println("\nCompras que estan en estado activo");
+            DBObject query = new BasicDBObject("compras", new BasicDBObject("$regex", "compras")); // busqueda por Administrador o Operaciones
+            cursor = collection.find(query);
+            DefaultListModel modeloLista = new DefaultListModel();
+
+            try {
+                while (cursor.hasNext()) {
+                    Persona persona = new Persona((BasicDBObject) cursor.next());
+                    modeloLista.addElement(persona.toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO FINAL: Cerrar la conexion
+            mongoClient.close();
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+        ListaElementosComprasBD();
+       
+    }
+
+    private void ListaElementosComprasBD() {
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Compras");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+
+            DefaultListModel modeloLista = new DefaultListModel();
+            DefaultTableModel model;
+            model = new DefaultTableModel();
+            model.addColumn("Servicio");
+            this.jTable1.setModel(model);
+
+            String info[] = new String[3];
+            
+            try {
+                while (cursor.hasNext()) {
+                    info[0] = cursor.next().toString();
+                    
+                    model.addRow(info);
+                    jTable1.setModel(model);
+                }
+            } finally {
+                cursor.close();
+            }
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -218,6 +338,7 @@ public class frmCompras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbx;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,3 +5,21 @@
 {'nombre' :Freddy;'apellido' :Paez;sexo :M;codigo :dsf32
 {'nombre' :oscar;'servicio' :;
 {'nombre' :efsef;'servicio' :Cambio de Aceite;
+{'nombre' :;'servicio' :Cambio de motor}
+{'nombre' :Freddy;'servicio' :Alineacion}
+{'nombre' :Oscar;'servicio' :Cambio de motor}
+{'nombre' :Freddy;'servicio' :Balanceo}
+{'nombre' :;'servicio' :}
+{'nombre' :Fredd;'servicio' :Alineacion}
+{'nombre' :CAmikla;'servicio' :Cambio de motor}
+{'nombre' :Leo;'servicio' :Balanceo}
+{'nombre' :Jeanntet;'servicio' :Cambio de pastillas}
+{'nombre' :Jair;'servicio' :Alineacion}
+{'nombre' :Camilaa;'servicio' :Alineacion}
+{'nombre' :Freddy;'servicio' :Alineacion}
+{'nombre' :CAmila;'servicio' :Cambio de motor}
+{'nombre' :Jair;'servicio' :Cambio de motor}
+{'nombre' :Let;'servicio' :Cambio de pastillas}
+{'nombre' :Vinicio;'servicio' :Cambio de motor}
+{'nombre' :Oca;'servicio' :Alineacion}
+{'nombre' :Leo;'servicio' :Alineacion}

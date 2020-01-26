@@ -29,8 +29,9 @@ public class frmProvitors extends javax.swing.JFrame {
     private final String ruta = System.getProperties().getProperty("user.dir");
 
     public frmProvitors() {
+        
         initComponents();
-
+        ListaElementosProvitorsBD();
     }
 
     private void CargarProvitors() {
@@ -208,6 +209,7 @@ public class frmProvitors extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         DefaultTableModel model;
         model = new DefaultTableModel();
         model.addColumn("Provitors");
@@ -243,6 +245,7 @@ public class frmProvitors extends javax.swing.JFrame {
         modelo.addRow(Datos);
         CargarProvitors();
         CrearProvitorMongo();
+        jTextField1.setText(" ");
 
     }//GEN-LAST:event_jButton1ActionPerformed
     private void CrearProvitorMongo() {

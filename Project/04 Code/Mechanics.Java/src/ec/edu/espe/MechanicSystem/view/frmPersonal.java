@@ -7,12 +7,21 @@
 package ec.edu.espe.MechanicSystem.view;
 
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -135,6 +144,7 @@ public class frmPersonal extends javax.swing.JFrame
         jScrollPane3.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 50));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,6 +226,11 @@ public class frmPersonal extends javax.swing.JFrame
         jScrollPane6.setViewportView(jList3);
 
         cmbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino\t", "Femenino", " " }));
+        cmbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,15 +269,14 @@ public class frmPersonal extends javax.swing.JFrame
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton3)
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jButton5)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -275,28 +289,27 @@ public class frmPersonal extends javax.swing.JFrame
                     .addComponent(jButton1)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jButton3)
-                                    .addComponent(cmbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4)))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane6))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton3)
+                            .addComponent(cmbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -370,7 +383,7 @@ public class frmPersonal extends javax.swing.JFrame
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         FileWriter fw = null;
-           PrintWriter pw = null;
+        PrintWriter pw = null;
         
         try {
             fw = new FileWriter("personal.txt",true);
@@ -388,8 +401,112 @@ public class frmPersonal extends javax.swing.JFrame
         }
         
         Gson gson = new Gson();
+        CrearPersonalMongo();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+private void CrearPersonalMongo() {
+        ArrayList<Persona> personal = new ArrayList<Persona>();
+        personal.add(new Persona(jTextField1.getText().toString(),jTextField2.getText().toString(),new ArrayList<String>(Arrays.asList((String) cmbx.getSelectedItem())),jTextField4.getText().toString()));
+        //compras.add(new Persona(jTextField2.getText().toString()));
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Personal");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.1: "CREATE" -> Metemos los objetos Nombre Persona (o documentos en Mongo) en la coleccion Personas
+            for (Persona pers : personal) {
+                collection.insert(pers.toDBObjectPersonal());
+            }
+
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+            System.out.println("Número de documentos en la colección : " + numDocumentos + "\n");
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+            try {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO 4.2.2: "READ" -> Hacemos una Query con condiciones (Buscar Futbolistas que sean delanteros) y lo pasamos a un objeto Java
+            System.out.println("\nCompras que estan en estado activo");
+            DBObject query = new BasicDBObject("personal", new BasicDBObject("$regex", "personal")); // busqueda por Administrador o Operaciones
+            cursor = collection.find(query);
+            DefaultListModel modeloLista = new DefaultListModel();
+
+            try {
+                while (cursor.hasNext()) {
+                    Persona persona = new Persona((BasicDBObject) cursor.next());
+                    modeloLista.addElement(persona.toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO FINAL: Cerrar la conexion
+            mongoClient.close();
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+        //ListaElementosComprasBD();
+       
+    }
+
+    private void ListaElementosComprasBD() {
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Compras");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+
+            DefaultListModel modeloLista = new DefaultListModel();
+            DefaultTableModel model;
+            model = new DefaultTableModel();
+            model.addColumn("Servicio");
+            this.jTable1.setModel(model);
+
+            String info[] = new String[3];
+            
+            try {
+                while (cursor.hasNext()) {
+                    info[0] = cursor.next().toString();
+                    
+                    model.addRow(info);
+                    jTable1.setModel(model);
+                }
+            } finally {
+                cursor.close();
+            }
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+
+    }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -397,6 +514,10 @@ public class frmPersonal extends javax.swing.JFrame
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void cmbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbxActionPerformed
 
     /**
      * @param args the command line arguments

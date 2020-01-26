@@ -2,3 +2,8 @@
 {'nombre' :Camila;'apellido' :PAez;sexo :F;codigo :Ec33
 {'nombre' :Oscar;'apellido' :PE;sexo :Femenino;codigo :ersdf3
 {'nombre' :Camila;'apellido' :f;sexo :Femenino;codigo :eee33
+{'nombre' :Pedro;'apellido' :Paez;sexo :Masculino	;codigo :pd33
+{'nombre' :MArcos;'apellido' :Perz;sexo :Masculino	;codigo :mcr333
+{'nombre' :Merl;'apellido' :dd;sexo :Femenino;codigo :mrle33
+{'nombre' :ccc;'apellido' :ccc;sexo :Femenino;codigo :ccc
+{'nombre' :ccg;'apellido' :gg;sexo :Femenino;codigo :gggg
