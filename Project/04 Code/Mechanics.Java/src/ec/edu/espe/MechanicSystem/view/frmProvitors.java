@@ -1,12 +1,22 @@
 package ec.edu.espe.MechanicSystem.view;
 
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -14,40 +24,50 @@ import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
 public class frmProvitors extends javax.swing.JFrame {
-DefaultTableModel modelo;
+
+    DefaultTableModel modelo;
     private final String ruta = System.getProperties().getProperty("user.dir");
-    
+
     public frmProvitors() {
         initComponents();
-        
-      File archivo = null;
-      FileReader fr = null;
-      BufferedReader br = null;
- 
-      try {
-         // Apertura del fichero y creacion de BufferedReader para poder
-         // hacer una lectura comoda (disponer del metodo readLine()).
-         archivo = new File (ruta+"//provitors.txt");
-         fr = new FileReader (archivo);
-         br = new BufferedReader(fr);
-         // Lectura del fichero
-         String linea;
-          DefaultListModel model_lista = new DefaultListModel();
-          DefaultTableModel model_tabla = new DefaultTableModel();
-          model_tabla.addColumn("PROVITORS");
-         while((linea=br.readLine())!=null){
-            System.out.println(linea);
-            jComboBox1.addItem(linea);
-            model_lista.addElement(linea);
-            model_tabla.addRow(new String[]{linea});
-         }
-          jList1.setModel(model_lista);
-          jTable1.setModel(model_tabla);
-      }      
-      catch(IOException e){}finally{try{if( null != fr ){fr.close();}}catch (IOException e2){}
-      }
-   }
-    
+
+    }
+
+    private void CargarProvitors() {
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+            // Apertura del fichero y creacion de BufferedReader para poder
+            // hacer una lectura comoda (disponer del metodo readLine()).
+            archivo = new File(ruta + "//provitors.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            // Lectura del fichero
+            String linea;
+            DefaultListModel model_lista = new DefaultListModel();
+            DefaultTableModel model_tabla = new DefaultTableModel();
+            model_tabla.addColumn("PROVITORS");
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+                jComboBox1.addItem(linea);
+                model_lista.addElement(linea);
+                model_tabla.addRow(new String[]{linea});
+            }
+            jList1.setModel(model_lista);
+            jTable1.setModel(model_tabla);
+        } catch (IOException e) {
+        } finally {
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (IOException e2) {
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,23 +104,15 @@ DefaultTableModel modelo;
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Provitors", "Title 2", "null", "Title 4"
+                "Provitors DBMongo"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setText("Agregar");
@@ -182,7 +194,7 @@ DefaultTableModel modelo;
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addGap(18, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -196,33 +208,145 @@ DefaultTableModel modelo;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       FileWriter fw = null;
-           PrintWriter pw = null;
-        
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Provitors");
+        this.jTable1.setModel(model);
+
+        String info[] = new String[3];
+        info[0] = jTextField1.getText();
+        model.addRow(info);
+
+        // String datos = jTextField1.getText();
+        FileWriter fw = null;
+        PrintWriter pw = null;
+
         try {
-            fw = new FileWriter("provitors.txt",true);
+            fw = new FileWriter("provitors.txt", true);
             pw = new PrintWriter(fw);
             String provitor = jTextField1.getText();
-            
-            
-           
 
-            pw.println( "{'Provitor' :" + provitor + "}");
+            pw.println("{'Provitor' :" + provitor + "}");
             pw.close();
         } catch (IOException ex) {
             Logger.getLogger(frmRegister.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         Gson gson = new Gson();
-        
+
         DefaultTableModel modelo;
         modelo = new DefaultTableModel();
         modelo.addColumn("Provitor");
-        this.jTable3.setModel(modelo);  
+        this.jTable3.setModel(modelo);
         String[] Datos = new String[5];
         Datos[0] = jTextField1.getText();
         modelo.addRow(Datos);
+        CargarProvitors();
+        CrearProvitorMongo();
+
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void CrearProvitorMongo() {
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+        personas.add(new Persona(jTextField1.getText().toString()));
+        //personas.add(new Persona(jTextField1.getText().toString(), jTextField1.getText().toString(), parseInt(jTextField3.getText().toString()), new ArrayList<String>(Arrays.asList("Administrador")), false));
+
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Provitors");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.1: "CREATE" -> Metemos los objetos Nombre Persona (o documentos en Mongo) en la coleccion Personas
+            for (Persona pers : personas) {
+                collection.insert(pers.toDBObjectProvitors());
+            }
+
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+            System.out.println("Número de documentos en la colección : " + numDocumentos + "\n");
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+            try {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO 4.2.2: "READ" -> Hacemos una Query con condiciones (Buscar Futbolistas que sean delanteros) y lo pasamos a un objeto Java
+            System.out.println("\nProvitors que estan en estado activo");
+            DBObject query = new BasicDBObject("provitor", new BasicDBObject("$regex", "provitor")); // busqueda por Administrador o Operaciones
+            cursor = collection.find(query);
+            DefaultListModel modeloLista = new DefaultListModel();
+
+            try {
+                while (cursor.hasNext()) {
+                    Persona persona = new Persona((BasicDBObject) cursor.next());
+                    modeloLista.addElement(persona.toString());
+                }
+            } finally {
+                cursor.close();
+            }
+
+            // PASO FINAL: Cerrar la conexion
+            mongoClient.close();
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+        ListaElementosProvitorsBD();
+    }
+
+    private void ListaElementosProvitorsBD() {
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+
+        try {
+            // PASO 1: Conexión al Server de MongoDB Pasandole el host y el puerto
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            // PASO 2: Conexión a la base de datos
+            DB db = mongoClient.getDB("Mechanics");
+
+            // PASO 3: Obtenemos una coleccion para trabajar con ella
+            DBCollection collection = db.getCollection("Provitors");
+
+            // PASO 4: CRUD (Create-Read-Update-Delete)
+            // PASO 4.2.1: "READ" -> Leemos todos los documentos de la base de datos
+            int numDocumentos = (int) collection.getCount();
+
+            // Busco todos los documentos de la colección y los imprimo
+            DBCursor cursor = collection.find();
+
+            DefaultListModel modeloLista = new DefaultListModel();
+            DefaultTableModel model;
+            model = new DefaultTableModel();
+            model.addColumn("Provitors");
+            this.jTable1.setModel(model);
+
+            String info[] = new String[3];
+            
+            try {
+                while (cursor.hasNext()) {
+                    info[0] = cursor.next().toString();
+                    model.addRow(info);
+                    jTable1.setModel(model);
+                }
+            } finally {
+                cursor.close();
+            }
+
+        } catch (UnknownHostException ex) {
+            System.out.println("Exception al conectar al server de Mongo: " + ex.getMessage());
+        }
+
+    }
 
     /**
      * @param args the command line arguments
